@@ -1,0 +1,58 @@
+<div class="subscription-container">
+  <h1>My Subscriptions</h1>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="subscriptions" class="mat-elevation-z8">
+      
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let subscription"> {{subscription.name}} </td>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let subscription"> ${{subscription.price}} </td>
+      </ng-container>
+
+      <!-- Category Column -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let subscription"> {{subscription.category}} </td>
+      </ng-container>
+
+      <!-- Billing Cycle Column -->
+      <ng-container matColumnDef="billingCycle">
+        <th mat-header-cell *matHeaderCellDef> Billing Cycle </th>
+        <td mat-cell *matCellDef="let subscription"> {{subscription.billingCycle}} </td>
+      </ng-container>
+
+      <!-- Renewal Date Column -->
+      <ng-container matColumnDef="renewalDate">
+        <th mat-header-cell *matHeaderCellDef> Renewal Date </th>
+        <td mat-cell *matCellDef="let subscription"> {{subscription.renewalDate | date}} </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let subscription">
+          <button mat-icon-button color="primary" (click)="openEditDialog(subscription)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteSubscription(subscription.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <button mat-fab color="primary" class="add-button" (click)="openAddDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

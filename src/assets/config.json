@@ -1,0 +1,18 @@
+{
+  "endpoints": {
+    "auth": {
+      "login": "/api/auth/login",
+      "register": "/api/auth/register"
+    },
+    "dashboard": {
+      "summary": "/api/dashboard/summary"
+    },
+    "subscriptions": {
+      "base": "/api/subscriptions",
+      "getAll": "/api/subscriptions",
+      "create": "/api/subscriptions",
+      "update": "/api/subscriptions",
+      "delete": "/api/subscriptions"
+    }
+  }
+}

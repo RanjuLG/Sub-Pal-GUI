@@ -1,0 +1,24 @@
+.subscription-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 80px;
+}
+
+table {
+  width: 100%;
+}
+
+.add-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

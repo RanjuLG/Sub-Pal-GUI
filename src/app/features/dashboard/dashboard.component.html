@@ -1,0 +1,81 @@
+<div class="dashboard-container">
+  <mat-toolbar color="primary">
+    <span>Sub Pal Dashboard</span>
+    <span class="spacer"></span>
+    <button mat-button (click)="navigateToSubscriptions()">
+      <mat-icon>subscriptions</mat-icon>
+      My Subscriptions
+    </button>
+    <button mat-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </mat-toolbar>
+
+  <div class="content" *ngIf="summary">
+    <div class="cards-container">
+      <mat-card class="summary-card">
+        <mat-card-header>
+          <mat-card-title>Total Monthly Cost</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2 class="cost">${{ summary.totalMonthlyCost | number:'1.2-2' }}</h2>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="summary-card">
+        <mat-card-header>
+          <mat-card-title>Total Annual Cost</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2 class="cost">${{ summary.totalAnnualCost | number:'1.2-2' }}</h2>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="bottom-section">
+      <mat-card class="spending-card">
+        <mat-card-header>
+          <mat-card-title>Spending by Category</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="summary.spendingByCategory && summary.spendingByCategory.length > 0; else noData">
+            <div *ngFor="let category of summary.spendingByCategory" class="category-item">
+              <span class="category-name">{{ category.category }}</span>
+              <span class="category-amount">${{ category.amount | number:'1.2-2' }}</span>
+            </div>
+          </div>
+          <ng-template #noData>
+            <p>No spending data available</p>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="renewals-card">
+        <mat-card-header>
+          <mat-card-title>Upcoming Renewals</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list *ngIf="summary.upcomingRenewals && summary.upcomingRenewals.length > 0; else noRenewals">
+            <mat-list-item *ngFor="let renewal of summary.upcomingRenewals">
+              <div class="renewal-item">
+                <div>
+                  <strong>{{ renewal.name }}</strong>
+                  <p class="renewal-date">{{ renewal.renewalDate | date }}</p>
+                </div>
+                <div class="renewal-price">${{ renewal.price | number:'1.2-2' }}</div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+          <ng-template #noRenewals>
+            <p>No upcoming renewals</p>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="!summary">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
