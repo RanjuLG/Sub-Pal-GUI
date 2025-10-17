@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 
 interface ApiConfig {
+  apiUrl: string;
   endpoints: {
     auth: {
       login: string;
@@ -60,7 +60,10 @@ export class ConfigService {
   }
 
   getApiUrl(): string {
-    return environment.apiUrl;
+    if (!this.config) {
+      throw new Error('Config not loaded. Call loadConfig() first.');
+    }
+    return this.config.apiUrl;
   }
 
   getEndpoint(category: keyof ApiConfig['endpoints'], key: string): string {
@@ -68,7 +71,7 @@ export class ConfigService {
       throw new Error('Config not loaded. Call loadConfig() first.');
     }
     const categoryConfig = this.config.endpoints[category] as any;
-    return `${environment.apiUrl}${categoryConfig[key]}`;
+    return `${this.config.apiUrl}${categoryConfig[key]}`;
   }
 
   get endpoints(): ApiConfig['endpoints'] | null {
