@@ -13,6 +13,9 @@
       "create": "/api/subscriptions",
       "update": "/api/subscriptions",
       "delete": "/api/subscriptions"
+    },
+    "categories": {
+      "getAll": "/api/categories"
     }
   },
   "settings": {

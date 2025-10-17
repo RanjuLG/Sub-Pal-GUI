@@ -33,4 +33,9 @@ export class SubscriptionService {
     const baseUrl = this.configService.getEndpoint('subscriptions', 'delete');
     return this.http.delete(`${baseUrl}/${id}`);
   }
+
+  getCategories(): Observable<string[]> {
+    const url = this.configService.getEndpoint('categories', 'getAll');
+    return this.http.get<string[]>(url);
+  }
 }

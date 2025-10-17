@@ -18,6 +18,7 @@ export class SubscriptionFormComponent implements OnInit {
   subscriptionForm!: FormGroup;
   isEdit = false;
   billingCycles = ['Monthly', 'Yearly', 'Weekly'];
+  categories: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +28,7 @@ export class SubscriptionFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.isEdit = !!this.subscription;
+    this.loadCategories();
     
     // Convert date string to YYYY-MM-DD format for input[type="date"]
     let dateValue = '';
@@ -64,6 +66,8 @@ export class SubscriptionFormComponent implements OnInit {
 
       request.subscribe({
         next: () => {
+          // Reload categories to include any newly created ones
+          this.loadCategories();
           this.formSubmit.emit();
         },
         error: (error) => {
@@ -75,5 +79,16 @@ export class SubscriptionFormComponent implements OnInit {
 
   onCancel(): void {
     this.formCancel.emit();
+  }
+
+  loadCategories(): void {
+    this.subscriptionService.getCategories().subscribe({
+      next: (categories) => {
+        this.categories = categories;
+      },
+      error: (error) => {
+        console.error('Error loading categories:', error);
+      }
+    });
   }
 }

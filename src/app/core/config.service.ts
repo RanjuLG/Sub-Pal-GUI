@@ -18,6 +18,9 @@ interface ApiConfig {
       update: string;
       delete: string;
     };
+    categories: {
+      getAll: string;
+    };
   };
 }
 

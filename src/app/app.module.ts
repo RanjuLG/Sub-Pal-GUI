@@ -7,6 +7,9 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Chart.js
+import { provideCharts, withDefaultRegisterables, BaseChartDirective } from 'ng2-charts';
+
 // Core
 import { JwtInterceptor } from './core/jwt.interceptor';
 import { ConfigService } from './core/config.service';
@@ -39,7 +42,8 @@ import { LocalDatePipe } from './shared/local-date.pipe';
         BrowserModule,
         AppRoutingModule,
         CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BaseChartDirective
     ], providers: [
         {
             provide: HTTP_INTERCEPTORS,
@@ -52,6 +56,7 @@ import { LocalDatePipe } from './shared/local-date.pipe';
             deps: [ConfigService],
             multi: true
         },
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withInterceptorsFromDi()),
+        provideCharts(withDefaultRegisterables())
     ] })
 export class AppModule { }

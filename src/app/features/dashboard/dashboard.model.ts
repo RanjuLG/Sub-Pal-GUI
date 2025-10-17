@@ -1,7 +1,7 @@
 export interface DashboardSummary {
   totalMonthlyCost: number;
   totalAnnualCost: number;
-  spendingByCategory: CategorySpending[];
+  spendingByCategory: CategorySpending[] | { [key: string]: number };
   upcomingRenewals: UpcomingRenewal[];
 }
 

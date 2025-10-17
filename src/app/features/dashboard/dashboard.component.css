@@ -87,3 +87,18 @@
 mat-list-item {
   margin-bottom: 8px;
 }
+
+/* Chart container */
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.chart-container canvas {
+  max-height: 300px;
+}

@@ -33,8 +33,18 @@
 
   <div class="mb-3">
     <label for="category" class="form-label">Category</label>
-    <input type="text" class="form-control" id="category" formControlName="category" placeholder="Entertainment, Utilities, etc."
-           [class.is-invalid]="subscriptionForm.get('category')?.invalid && subscriptionForm.get('category')?.touched">
+    <input 
+      type="text" 
+      class="form-control" 
+      id="category" 
+      formControlName="category" 
+      list="categoryList"
+      placeholder="Select existing or type new category"
+      [class.is-invalid]="subscriptionForm.get('category')?.invalid && subscriptionForm.get('category')?.touched">
+    <datalist id="categoryList">
+      <option *ngFor="let cat of categories" [value]="cat">
+    </datalist>
+    <small class="form-text text-muted">Select from existing categories or type a new one</small>
     <div class="invalid-feedback" *ngIf="subscriptionForm.get('category')?.hasError('required') && subscriptionForm.get('category')?.touched">
       Category is required
     </div>
