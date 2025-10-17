@@ -33,18 +33,30 @@
 
   <div class="mb-3">
     <label for="category" class="form-label">Category</label>
+    <div class="input-group">
+      <select 
+        class="form-select" 
+        id="categorySelect" 
+        title="Select category"
+        (change)="onCategorySelectChange($event)"
+        [class.is-invalid]="subscriptionForm.get('category')?.invalid && subscriptionForm.get('category')?.touched">
+        <option value="">-- Select a category --</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        <option value="__custom__">+ Add new category</option>
+      </select>
+    </div>
     <input 
+      *ngIf="showCustomCategoryInput"
       type="text" 
-      class="form-control" 
+      class="form-control mt-2" 
       id="category" 
       formControlName="category" 
-      list="categoryList"
-      placeholder="Select existing or type new category"
+      placeholder="Enter new category name"
       [class.is-invalid]="subscriptionForm.get('category')?.invalid && subscriptionForm.get('category')?.touched">
-    <datalist id="categoryList">
-      <option *ngFor="let cat of categories" [value]="cat">
-    </datalist>
-    <small class="form-text text-muted">Select from existing categories or type a new one</small>
+    <small class="form-text text-muted">
+      <span *ngIf="categories.length > 0">Select from existing categories or add a new one</span>
+      <span *ngIf="categories.length === 0">No categories yet. Enter a new category name.</span>
+    </small>
     <div class="invalid-feedback" *ngIf="subscriptionForm.get('category')?.hasError('required') && subscriptionForm.get('category')?.touched">
       Category is required
     </div>

@@ -19,6 +19,7 @@ export class SubscriptionFormComponent implements OnInit {
   isEdit = false;
   billingCycles = ['Monthly', 'Yearly', 'Weekly'];
   categories: string[] = [];
+  showCustomCategoryInput = false;
 
   constructor(
     private fb: FormBuilder,
@@ -50,6 +51,31 @@ export class SubscriptionFormComponent implements OnInit {
       notificationDaysBefore: [this.subscription?.notificationDaysBefore || 3, [Validators.min(0), Validators.max(30)]],
       notificationMessage: [this.subscription?.notificationMessage || '']
     });
+
+    // If editing and has a category, check if it's in the list or is custom
+    if (this.subscription?.category) {
+      // Show custom input if category is set but not in list yet
+      this.showCustomCategoryInput = true;
+    }
+  }
+
+  onCategorySelectChange(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    const value = select.value;
+    
+    if (value === '__custom__') {
+      // Show custom input field
+      this.showCustomCategoryInput = true;
+      this.subscriptionForm.patchValue({ category: '' });
+    } else if (value === '') {
+      // No selection
+      this.showCustomCategoryInput = false;
+      this.subscriptionForm.patchValue({ category: '' });
+    } else {
+      // Selected existing category
+      this.showCustomCategoryInput = false;
+      this.subscriptionForm.patchValue({ category: value });
+    }
   }
 
   onSubmit(): void {
@@ -87,6 +113,7 @@ export class SubscriptionFormComponent implements OnInit {
   loadCategories(): void {
     this.subscriptionService.getCategories().subscribe({
       next: (categories) => {
+        console.log('Categories loaded:', categories);
         this.categories = categories;
       },
       error: (error) => {
