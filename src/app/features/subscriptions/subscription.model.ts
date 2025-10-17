@@ -6,4 +6,9 @@ export interface Subscription {
   category: string;
   nextRenewalDate: Date | string;
   userId?: string;
+  
+  // Notification settings
+  notificationEnabled?: boolean;
+  notificationDaysBefore?: number;
+  notificationMessage?: string;
 }

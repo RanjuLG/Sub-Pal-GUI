@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './core/auth.service';
+import { NotificationService } from './features/notifications/notification.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -10,11 +12,20 @@ import { AuthService } from './core/auth.service';
 })
 export class AppComponent {
   title = 'Sub-Pal-GUI';
+  unreadNotificationCount$: Observable<number>;
 
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private notificationService: NotificationService
+  ) {
+    this.unreadNotificationCount$ = this.notificationService.unreadCount$;
+    
+    // Load unread count if user is logged in
+    if (this.authService.isLoggedIn()) {
+      this.notificationService.loadUnreadCount();
+    }
+  }
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();

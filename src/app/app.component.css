@@ -21,3 +21,14 @@
   opacity: 0.8;
 }
 
+/* Notification badge styling */
+.badge.rounded-pill {
+  font-size: 0.65rem;
+  padding: 0.25em 0.5em;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

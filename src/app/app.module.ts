@@ -25,6 +25,7 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { SubscriptionListComponent } from './features/subscriptions/subscription-list/subscription-list.component';
 import { SubscriptionFormComponent } from './features/subscriptions/subscription-form/subscription-form.component';
+import { NotificationsComponent } from './features/notifications/notifications.component';
 
 // Pipes
 import { LocalDatePipe } from './shared/local-date.pipe';
@@ -36,6 +37,7 @@ import { LocalDatePipe } from './shared/local-date.pipe';
         DashboardComponent,
         SubscriptionListComponent,
         SubscriptionFormComponent,
+        NotificationsComponent,
         LocalDatePipe
     ],
     bootstrap: [AppComponent], imports: [

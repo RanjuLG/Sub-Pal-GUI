@@ -21,6 +21,13 @@ interface ApiConfig {
     categories: {
       getAll: string;
     };
+    notifications: {
+      getAll: string;
+      getUnread: string;
+      markAsRead: string;
+      markAllAsRead: string;
+      delete: string;
+    };
   };
 }
 

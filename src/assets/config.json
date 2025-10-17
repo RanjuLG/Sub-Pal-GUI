@@ -16,6 +16,13 @@
     },
     "categories": {
       "getAll": "/api/categories"
+    },
+    "notifications": {
+      "getAll": "/api/notifications",
+      "getUnread": "/api/notifications/unread",
+      "markAsRead": "/api/notifications",
+      "markAllAsRead": "/api/notifications/mark-all-read",
+      "delete": "/api/notifications"
     }
   },
   "settings": {

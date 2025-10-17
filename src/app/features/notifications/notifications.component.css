@@ -1,0 +1,120 @@
+.notifications-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.notification-card {
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+}
+
+.notification-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.notification-card.unread {
+  background-color: #f8f9fa;
+  border-left-color: #0d6efd;
+}
+
+.notification-card.notification-reminder {
+  border-left-color: #0dcaf0;
+}
+
+.notification-card.notification-due {
+  border-left-color: #ffc107;
+}
+
+.notification-card.notification-overdue {
+  border-left-color: #dc3545;
+}
+
+.notification-icon {
+  font-size: 1.5rem;
+  color: #6c757d;
+}
+
+.notification-reminder .notification-icon {
+  color: #0dcaf0;
+}
+
+.notification-due .notification-icon {
+  color: #ffc107;
+}
+
+.notification-overdue .notification-icon {
+  color: #dc3545;
+}
+
+.notification-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.notification-message {
+  font-size: 1rem;
+  color: #495057;
+}
+
+.notification-description {
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.notification-meta {
+  font-size: 0.85rem;
+}
+
+.notification-content {
+  cursor: pointer;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-group {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Badge styling */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Empty state icon */
+.bi-bell-slash {
+  opacity: 0.3;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  color: #ccc;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .notification-card {
+    margin-bottom: 1rem;
+  }
+
+  .notification-icon {
+    font-size: 1.2rem;
+  }
+
+  .notification-title {
+    font-size: 1rem;
+  }
+
+  .notification-message {
+    font-size: 0.9rem;
+  }
+}

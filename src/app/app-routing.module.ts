@@ -4,6 +4,7 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { SubscriptionListComponent } from './features/subscriptions/subscription-list/subscription-list.component';
+import { NotificationsComponent } from './features/notifications/notifications.component';
 import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'subscriptions', component: SubscriptionListComponent, canActivate: [AuthGuard] }
+  { path: 'subscriptions', component: SubscriptionListComponent, canActivate: [AuthGuard] },
+  { path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

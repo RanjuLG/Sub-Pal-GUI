@@ -45,7 +45,10 @@ export class SubscriptionFormComponent implements OnInit {
       price: [this.subscription?.price || 0, [Validators.required, Validators.min(0)]],
       billingCycle: [this.subscription?.billingCycle || 'Monthly', [Validators.required]],
       category: [this.subscription?.category || '', [Validators.required]],
-      nextRenewalDate: [dateValue, [Validators.required]]
+      nextRenewalDate: [dateValue, [Validators.required]],
+      notificationEnabled: [this.subscription?.notificationEnabled || false],
+      notificationDaysBefore: [this.subscription?.notificationDaysBefore || 3, [Validators.min(0), Validators.max(30)]],
+      notificationMessage: [this.subscription?.notificationMessage || '']
     });
   }
 
