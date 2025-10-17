@@ -1,1 +1,21 @@
+<nav class="navbar navbar-dark bg-primary" *ngIf="isLoggedIn()">
+  <div class="container-fluid">
+    <a routerLink="/dashboard" class="navbar-brand d-flex align-items-center">
+      <img src="assets/SubPalLogo.png" alt="Sub Pal" class="logo-img me-2">
+      <span>SubPal</span>
+    </a>
+    <div class="d-flex align-items-center">
+      <a routerLink="/dashboard" class="btn btn-link text-white me-2" title="Home">
+        <i class="bi bi-house-door-fill fs-5"></i>
+      </a>
+      <button class="btn btn-outline-light me-2" (click)="navigateToSubscriptions()">
+        <i class="bi bi-card-list"></i> My Subscriptions
+      </button>
+      <button class="btn btn-outline-light" (click)="logout()">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
 <router-outlet></router-outlet>
