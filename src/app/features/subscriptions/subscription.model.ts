@@ -4,6 +4,6 @@ export interface Subscription {
   price: number;
   billingCycle: 'Monthly' | 'Yearly' | 'Weekly';
   category: string;
-  renewalDate: Date | string;
+  nextRenewalDate: Date | string;
   userId?: string;
 }

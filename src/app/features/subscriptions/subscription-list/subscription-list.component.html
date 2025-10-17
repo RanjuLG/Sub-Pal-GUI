@@ -29,9 +29,9 @@
       </ng-container>
 
       <!-- Renewal Date Column -->
-      <ng-container matColumnDef="renewalDate">
+      <ng-container matColumnDef="nextRenewalDate">
         <th mat-header-cell *matHeaderCellDef> Renewal Date </th>
-        <td mat-cell *matCellDef="let subscription"> {{subscription.renewalDate | date}} </td>
+        <td mat-cell *matCellDef="let subscription"> {{subscription.nextRenewalDate | localDate}} </td>
       </ng-container>
 
       <!-- Actions Column -->

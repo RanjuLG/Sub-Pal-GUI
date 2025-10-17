@@ -14,5 +14,9 @@
       "update": "/api/subscriptions",
       "delete": "/api/subscriptions"
     }
+  },
+  "settings": {
+    "dateFormat": "local",
+    "note": "All dates are sent and received in local time (ISO format without timezone: YYYY-MM-DDTHH:mm:ss)"
   }
 }

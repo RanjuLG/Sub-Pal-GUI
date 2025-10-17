@@ -1,6 +1,6 @@
 <div class="dashboard-container">
   <mat-toolbar color="primary">
-    <span>Sub Pal Dashboard</span>
+    <span>SubPal Dashboard</span>
     <span class="spacer"></span>
     <button mat-button (click)="navigateToSubscriptions()">
       <mat-icon>subscriptions</mat-icon>
@@ -61,7 +61,7 @@
               <div class="renewal-item">
                 <div>
                   <strong>{{ renewal.name }}</strong>
-                  <p class="renewal-date">{{ renewal.renewalDate | date }}</p>
+                  <p class="renewal-date">{{ renewal.nextRenewalDate | localDate }}</p>
                 </div>
                 <div class="renewal-price">${{ renewal.price | number:'1.2-2' }}</div>
               </div>

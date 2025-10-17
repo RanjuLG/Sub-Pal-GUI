@@ -12,6 +12,6 @@ export interface CategorySpending {
 
 export interface UpcomingRenewal {
   name: string;
-  renewalDate: Date | string;
+  nextRenewalDate: Date | string;
   price: number;
 }

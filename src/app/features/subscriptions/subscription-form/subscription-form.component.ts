@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SubscriptionService } from '../subscription.service';
 import { Subscription } from '../subscription.model';
+import { DateUtilsService } from '../../../shared/date-utils.service';
 
 @Component({
   selector: 'app-subscription-form',
@@ -17,6 +18,7 @@ export class SubscriptionFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private subscriptionService: SubscriptionService,
+    private dateUtils: DateUtilsService,
     public dialogRef: MatDialogRef<SubscriptionFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Subscription | null
   ) {
@@ -29,14 +31,18 @@ export class SubscriptionFormComponent implements OnInit {
       price: [this.data?.price || 0, [Validators.required, Validators.min(0)]],
       billingCycle: [this.data?.billingCycle || 'Monthly', [Validators.required]],
       category: [this.data?.category || '', [Validators.required]],
-      renewalDate: [this.data?.renewalDate ? new Date(this.data.renewalDate) : new Date(), [Validators.required]]
+      nextRenewalDate: [this.data?.nextRenewalDate ? new Date(this.data.nextRenewalDate) : new Date(), [Validators.required]]
     });
   }
 
   onSubmit(): void {
     if (this.subscriptionForm.valid) {
+      const formValue = this.subscriptionForm.value;
+      
+      // Convert nextRenewalDate to local ISO string for backend
       const subscription: Subscription = {
-        ...this.subscriptionForm.value,
+        ...formValue,
+        nextRenewalDate: this.dateUtils.toLocalISOString(formValue.nextRenewalDate),
         id: this.data?.id
       };
 

@@ -11,7 +11,7 @@ import { SubscriptionFormComponent } from '../subscription-form/subscription-for
 })
 export class SubscriptionListComponent implements OnInit {
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['name', 'price', 'category', 'billingCycle', 'renewalDate', 'actions'];
+  displayedColumns: string[] = ['name', 'price', 'category', 'billingCycle', 'nextRenewalDate', 'actions'];
 
   constructor(
     private subscriptionService: SubscriptionService,

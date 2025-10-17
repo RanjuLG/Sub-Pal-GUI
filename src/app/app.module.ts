@@ -38,6 +38,9 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { SubscriptionListComponent } from './features/subscriptions/subscription-list/subscription-list.component';
 import { SubscriptionFormComponent } from './features/subscriptions/subscription-form/subscription-form.component';
 
+// Pipes
+import { LocalDatePipe } from './shared/local-date.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +48,8 @@ import { SubscriptionFormComponent } from './features/subscriptions/subscription
     RegisterComponent,
     DashboardComponent,
     SubscriptionListComponent,
-    SubscriptionFormComponent
+    SubscriptionFormComponent,
+    LocalDatePipe
   ],
   imports: [
     BrowserModule,
