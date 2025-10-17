@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { SubscriptionService } from '../subscription.service';
 import { Subscription } from '../subscription.model';
-import { SubscriptionFormComponent } from '../subscription-form/subscription-form.component';
 
 @Component({
-  selector: 'app-subscription-list',
-  templateUrl: './subscription-list.component.html',
-  styleUrls: ['./subscription-list.component.css']
+    selector: 'app-subscription-list',
+    templateUrl: './subscription-list.component.html',
+    styleUrls: ['./subscription-list.component.css'],
+    standalone: false
 })
 export class SubscriptionListComponent implements OnInit {
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['name', 'price', 'category', 'billingCycle', 'nextRenewalDate', 'actions'];
+  showAddForm = false;
+  selectedSubscription: Subscription | null = null;
 
   constructor(
-    private subscriptionService: SubscriptionService,
-    private dialog: MatDialog
+    private subscriptionService: SubscriptionService
   ) { }
 
   ngOnInit(): void {
@@ -33,30 +32,19 @@ export class SubscriptionListComponent implements OnInit {
     });
   }
 
-  openAddDialog(): void {
-    const dialogRef = this.dialog.open(SubscriptionFormComponent, {
-      width: '500px',
-      data: null
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loadSubscriptions();
-      }
-    });
+  editSubscription(subscription: Subscription): void {
+    this.selectedSubscription = subscription;
+    this.showAddForm = false;
   }
 
-  openEditDialog(subscription: Subscription): void {
-    const dialogRef = this.dialog.open(SubscriptionFormComponent, {
-      width: '500px',
-      data: subscription
-    });
+  closeForm(): void {
+    this.showAddForm = false;
+    this.selectedSubscription = null;
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loadSubscriptions();
-      }
-    });
+  onFormSubmit(): void {
+    this.closeForm();
+    this.loadSubscriptions();
   }
 
   deleteSubscription(id: string | undefined): void {

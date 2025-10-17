@@ -1,81 +1,94 @@
 <div class="dashboard-container">
-  <mat-toolbar color="primary">
-    <span>SubPal Dashboard</span>
-    <span class="spacer"></span>
-    <button mat-button (click)="navigateToSubscriptions()">
-      <mat-icon>subscriptions</mat-icon>
-      My Subscriptions
-    </button>
-    <button mat-button (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      Logout
-    </button>
-  </mat-toolbar>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <span class="navbar-brand">SubPal Dashboard</span>
+      <div class="d-flex">
+        <button class="btn btn-outline-light me-2" (click)="navigateToSubscriptions()">
+          <i class="bi bi-card-list"></i> My Subscriptions
+        </button>
+        <button class="btn btn-outline-light" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </button>
+      </div>
+    </div>
+  </nav>
 
-  <div class="content" *ngIf="summary">
-    <div class="cards-container">
-      <mat-card class="summary-card">
-        <mat-card-header>
-          <mat-card-title>Total Monthly Cost</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <h2 class="cost">${{ summary.totalMonthlyCost | number:'1.2-2' }}</h2>
-        </mat-card-content>
-      </mat-card>
+  <div class="content container-fluid py-4" *ngIf="summary">
+    <div class="row mb-4">
+      <div class="col-md-6 mb-3">
+        <div class="card summary-card">
+          <div class="card-header">
+            <h5 class="mb-0">Total Monthly Cost</h5>
+          </div>
+          <div class="card-body text-center">
+            <h2 class="cost">${{ summary.totalMonthlyCost | number:'1.2-2' }}</h2>
+          </div>
+        </div>
+      </div>
 
-      <mat-card class="summary-card">
-        <mat-card-header>
-          <mat-card-title>Total Annual Cost</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <h2 class="cost">${{ summary.totalAnnualCost | number:'1.2-2' }}</h2>
-        </mat-card-content>
-      </mat-card>
+      <div class="col-md-6 mb-3">
+        <div class="card summary-card">
+          <div class="card-header">
+            <h5 class="mb-0">Total Annual Cost</h5>
+          </div>
+          <div class="card-body text-center">
+            <h2 class="cost">${{ summary.totalAnnualCost | number:'1.2-2' }}</h2>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="bottom-section">
-      <mat-card class="spending-card">
-        <mat-card-header>
-          <mat-card-title>Spending by Category</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div *ngIf="summary.spendingByCategory && summary.spendingByCategory.length > 0; else noData">
-            <div *ngFor="let category of summary.spendingByCategory" class="category-item">
-              <span class="category-name">{{ category.category }}</span>
-              <span class="category-amount">${{ category.amount | number:'1.2-2' }}</span>
-            </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="card spending-card">
+          <div class="card-header">
+            <h5 class="mb-0">Spending by Category</h5>
           </div>
-          <ng-template #noData>
-            <p>No spending data available</p>
-          </ng-template>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card class="renewals-card">
-        <mat-card-header>
-          <mat-card-title>Upcoming Renewals</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list *ngIf="summary.upcomingRenewals && summary.upcomingRenewals.length > 0; else noRenewals">
-            <mat-list-item *ngFor="let renewal of summary.upcomingRenewals">
-              <div class="renewal-item">
-                <div>
-                  <strong>{{ renewal.name }}</strong>
-                  <p class="renewal-date">{{ renewal.nextRenewalDate | localDate }}</p>
-                </div>
-                <div class="renewal-price">${{ renewal.price | number:'1.2-2' }}</div>
+          <div class="card-body">
+            <div *ngIf="summary.spendingByCategory && summary.spendingByCategory.length > 0; else noData">
+              <div *ngFor="let category of summary.spendingByCategory" class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                <span class="category-name">{{ category.category }}</span>
+                <span class="category-amount fw-bold">${{ category.amount | number:'1.2-2' }}</span>
               </div>
-            </mat-list-item>
-          </mat-list>
-          <ng-template #noRenewals>
-            <p>No upcoming renewals</p>
-          </ng-template>
-        </mat-card-content>
-      </mat-card>
+            </div>
+            <ng-template #noData>
+              <p class="text-muted">No spending data available</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <div class="card renewals-card">
+          <div class="card-header">
+            <h5 class="mb-0">Upcoming Renewals</h5>
+          </div>
+          <div class="card-body">
+            <div *ngIf="summary.upcomingRenewals && summary.upcomingRenewals.length > 0; else noRenewals">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let renewal of summary.upcomingRenewals">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <strong>{{ renewal.name }}</strong>
+                      <p class="text-muted mb-0 small">{{ renewal.nextRenewalDate | localDate }}</p>
+                    </div>
+                    <div class="fw-bold">${{ renewal.price | number:'1.2-2' }}</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <ng-template #noRenewals>
+              <p class="text-muted">No upcoming renewals</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="loading" *ngIf="!summary">
-    <mat-spinner></mat-spinner>
+  <div class="text-center py-5" *ngIf="!summary">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </div>
 </div>

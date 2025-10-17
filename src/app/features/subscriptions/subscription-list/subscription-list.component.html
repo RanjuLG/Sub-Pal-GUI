@@ -1,58 +1,64 @@
-<div class="subscription-container">
-  <h1>My Subscriptions</h1>
+<div class="subscription-container container-fluid py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>My Subscriptions</h1>
+    <button class="btn btn-primary" (click)="showAddForm = true">
+      <i class="bi bi-plus-circle"></i> Add Subscription
+    </button>
+  </div>
 
-  <div class="table-container">
-    <table mat-table [dataSource]="subscriptions" class="mat-elevation-z8">
-      
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let subscription"> {{subscription.name}} </td>
-      </ng-container>
-
-      <!-- Price Column -->
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef> Price </th>
-        <td mat-cell *matCellDef="let subscription"> ${{subscription.price}} </td>
-      </ng-container>
-
-      <!-- Category Column -->
-      <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef> Category </th>
-        <td mat-cell *matCellDef="let subscription"> {{subscription.category}} </td>
-      </ng-container>
-
-      <!-- Billing Cycle Column -->
-      <ng-container matColumnDef="billingCycle">
-        <th mat-header-cell *matHeaderCellDef> Billing Cycle </th>
-        <td mat-cell *matCellDef="let subscription"> {{subscription.billingCycle}} </td>
-      </ng-container>
-
-      <!-- Renewal Date Column -->
-      <ng-container matColumnDef="nextRenewalDate">
-        <th mat-header-cell *matHeaderCellDef> Renewal Date </th>
-        <td mat-cell *matCellDef="let subscription"> {{subscription.nextRenewalDate | localDate}} </td>
-      </ng-container>
-
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let subscription">
-          <button mat-icon-button color="primary" (click)="openEditDialog(subscription)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="deleteSubscription(subscription.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Billing Cycle</th>
+          <th>Renewal Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subscription of subscriptions">
+          <td>{{subscription.name}}</td>
+          <td>${{subscription.price}}</td>
+          <td>{{subscription.category}}</td>
+          <td>{{subscription.billingCycle}}</td>
+          <td>{{subscription.nextRenewalDate | localDate}}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary me-2" (click)="editSubscription(subscription)">
+              <i class="bi bi-pencil"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteSubscription(subscription.id)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="subscriptions.length === 0">
+          <td colspan="6" class="text-center text-muted">No subscriptions found. Add your first subscription!</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 
-  <button mat-fab color="primary" class="add-button" (click)="openAddDialog()">
-    <mat-icon>add</mat-icon>
-  </button>
+  <!-- Add/Edit Form Modal -->
+  <div class="modal fade show" tabindex="-1" *ngIf="showAddForm || selectedSubscription" 
+       [style.display]="showAddForm || selectedSubscription ? 'block' : 'none'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ selectedSubscription ? 'Edit' : 'Add' }} Subscription</h5>
+          <button type="button" class="btn-close" (click)="closeForm()"></button>
+        </div>
+        <div class="modal-body">
+          <app-subscription-form 
+            [subscription]="selectedSubscription" 
+            (formSubmit)="onFormSubmit()" 
+            (formCancel)="closeForm()">
+          </app-subscription-form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade show" *ngIf="showAddForm || selectedSubscription"></div>
 </div>

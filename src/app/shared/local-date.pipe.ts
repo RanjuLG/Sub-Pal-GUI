@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DateUtilsService } from './date-utils.service';
 
 @Pipe({
-  name: 'localDate'
+    name: 'localDate',
+    standalone: false
 })
 export class LocalDatePipe implements PipeTransform {
   constructor(private dateUtils: DateUtilsService) {}

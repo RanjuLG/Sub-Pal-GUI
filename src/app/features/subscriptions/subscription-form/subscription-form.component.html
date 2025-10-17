@@ -1,61 +1,58 @@
-<h2 mat-dialog-title>{{ isEdit ? 'Edit' : 'Add' }} Subscription</h2>
+<form [formGroup]="subscriptionForm">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Netflix, Spotify, etc."
+           [class.is-invalid]="subscriptionForm.get('name')?.invalid && subscriptionForm.get('name')?.touched">
+    <div class="invalid-feedback" *ngIf="subscriptionForm.get('name')?.hasError('required') && subscriptionForm.get('name')?.touched">
+      Name is required
+    </div>
+  </div>
 
-<mat-dialog-content>
-  <form [formGroup]="subscriptionForm">
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name" placeholder="Netflix, Spotify, etc.">
-      <mat-error *ngIf="subscriptionForm.get('name')?.hasError('required')">
-        Name is required
-      </mat-error>
-    </mat-form-field>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="number" class="form-control" id="price" formControlName="price" placeholder="9.99"
+           [class.is-invalid]="subscriptionForm.get('price')?.invalid && subscriptionForm.get('price')?.touched">
+    <div class="invalid-feedback" *ngIf="subscriptionForm.get('price')?.hasError('required') && subscriptionForm.get('price')?.touched">
+      Price is required
+    </div>
+    <div class="invalid-feedback" *ngIf="subscriptionForm.get('price')?.hasError('min') && subscriptionForm.get('price')?.touched">
+      Price must be positive
+    </div>
+  </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Price</mat-label>
-      <input matInput type="number" formControlName="price" placeholder="9.99">
-      <mat-error *ngIf="subscriptionForm.get('price')?.hasError('required')">
-        Price is required
-      </mat-error>
-      <mat-error *ngIf="subscriptionForm.get('price')?.hasError('min')">
-        Price must be positive
-      </mat-error>
-    </mat-form-field>
+  <div class="mb-3">
+    <label for="billingCycle" class="form-label">Billing Cycle</label>
+    <select class="form-select" id="billingCycle" formControlName="billingCycle"
+            [class.is-invalid]="subscriptionForm.get('billingCycle')?.invalid && subscriptionForm.get('billingCycle')?.touched">
+      <option *ngFor="let cycle of billingCycles" [value]="cycle">{{ cycle }}</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="subscriptionForm.get('billingCycle')?.hasError('required') && subscriptionForm.get('billingCycle')?.touched">
+      Billing cycle is required
+    </div>
+  </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Billing Cycle</mat-label>
-      <mat-select formControlName="billingCycle">
-        <mat-option *ngFor="let cycle of billingCycles" [value]="cycle">
-          {{ cycle }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="subscriptionForm.get('billingCycle')?.hasError('required')">
-        Billing cycle is required
-      </mat-error>
-    </mat-form-field>
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <input type="text" class="form-control" id="category" formControlName="category" placeholder="Entertainment, Utilities, etc."
+           [class.is-invalid]="subscriptionForm.get('category')?.invalid && subscriptionForm.get('category')?.touched">
+    <div class="invalid-feedback" *ngIf="subscriptionForm.get('category')?.hasError('required') && subscriptionForm.get('category')?.touched">
+      Category is required
+    </div>
+  </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Category</mat-label>
-      <input matInput formControlName="category" placeholder="Entertainment, Utilities, etc.">
-      <mat-error *ngIf="subscriptionForm.get('category')?.hasError('required')">
-        Category is required
-      </mat-error>
-    </mat-form-field>
+  <div class="mb-3">
+    <label for="nextRenewalDate" class="form-label">Renewal Date</label>
+    <input type="date" class="form-control" id="nextRenewalDate" formControlName="nextRenewalDate"
+           [class.is-invalid]="subscriptionForm.get('nextRenewalDate')?.invalid && subscriptionForm.get('nextRenewalDate')?.touched">
+    <div class="invalid-feedback" *ngIf="subscriptionForm.get('nextRenewalDate')?.hasError('required') && subscriptionForm.get('nextRenewalDate')?.touched">
+      Renewal date is required
+    </div>
+  </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Renewal Date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="nextRenewalDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="subscriptionForm.get('nextRenewalDate')?.hasError('required')">
-        Renewal date is required
-      </mat-error>
-    </mat-form-field>
-  </form>
-</mat-dialog-content>
-
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!subscriptionForm.valid">
-    {{ isEdit ? 'Update' : 'Add' }}
-  </button>
-</mat-dialog-actions>
+  <div class="d-flex justify-content-end gap-2">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="!subscriptionForm.valid">
+      {{ isEdit ? 'Update' : 'Add' }}
+    </button>
+  </div>
+</form>
