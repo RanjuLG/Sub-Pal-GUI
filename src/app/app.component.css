@@ -1,8 +1,9 @@
-/* Navbar styling with gradient to match dashboard theme */
+/* Navbar styling with clean white theme */
 .navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 /* Logo styling in navbar */
@@ -20,13 +21,30 @@
   cursor: pointer;
   font-size: 1.5rem;
   font-weight: 600;
-  color: white !important;
+  color: #1f2937 !important;
 }
 
 /* Home icon button styling */
+.btn-link {
+  color: #4b5563 !important;
+}
+
 .btn-link:hover {
   text-decoration: none;
-  opacity: 0.8;
+  color: #1f2937 !important;
+}
+
+/* Button styling for navbar */
+.navbar .btn-outline-light {
+  color: #1f2937;
+  border-color: #d1d5db;
+  background-color: transparent;
+}
+
+.navbar .btn-outline-light:hover {
+  color: #ffffff;
+  background-color: #3b82f6;
+  border-color: #3b82f6;
 }
 
 /* Notification badge styling */

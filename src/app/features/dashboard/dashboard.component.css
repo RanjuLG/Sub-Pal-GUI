@@ -1,7 +1,7 @@
 /* Dashboard Container */
 .dashboard-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #f9fafb;
   padding-bottom: 40px;
 }
 
@@ -11,12 +11,11 @@
 
 /* Welcome Header */
 .welcome-header {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
   animation: slideDown 0.5s ease-out;
 }
 
@@ -34,9 +33,9 @@
 
 /* Summary Cards */
 .summary-card {
-  border: none;
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   position: relative;
@@ -50,8 +49,9 @@
 .summary-card:nth-child(4) { animation-delay: 0.4s; }
 
 .summary-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #d1d5db;
 }
 
 .summary-card .card-body {
@@ -74,19 +74,19 @@
 }
 
 .monthly-icon {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
 }
 
 .annual-icon {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: #10b981;
 }
 
 .subscriptions-icon {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: #8b5cf6;
 }
 
 .categories-icon {
-  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  background: #f59e0b;
 }
 
 /* Card Content */
@@ -101,10 +101,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin: 8px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1f2937;
 }
 
 .card-trend {
@@ -114,12 +111,10 @@
 /* Chart Card */
 .chart-card,
 .renewals-card {
-  border: none;
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.98);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
   animation: fadeInUp 0.6s ease-out 0.5s backwards;
   height: 100%;
   display: flex;
@@ -135,8 +130,8 @@
 
 .chart-card .card-header,
 .renewals-card .card-header {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
   padding: 20px 24px;
   border-radius: 16px 16px 0 0;
 }
@@ -150,7 +145,7 @@
 
 .header-icon {
   font-size: 1.5rem;
-  color: #667eea;
+  color: #3b82f6;
 }
 
 /* Chart Container */
@@ -181,7 +176,7 @@
 }
 
 .renewal-item:hover {
-  background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  background: #f9fafb;
 }
 
 .renewal-content {
@@ -195,7 +190,7 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,13 +223,13 @@
 }
 
 .cost-badge {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
   font-weight: 700;
   font-size: 0.95rem;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
 /* Empty State */
@@ -271,12 +266,12 @@
 }
 
 .renewals-list::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #9ca3af;
   border-radius: 10px;
 }
 
 .renewals-list::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  background: #6b7280;
 }
 
 /* Animations */
