@@ -6,3 +6,83 @@
 mat-dialog-content {
   min-width: 400px;
 }
+
+/* Form Styles */
+.form-label {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.form-text,
+.text-muted {
+  color: var(--text-secondary) !important;
+}
+
+.form-check-label {
+  color: var(--text-primary);
+}
+
+.form-check-input {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Card Styles for Notification Settings */
+.card {
+  background-color: var(--bg-tertiary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 0.75rem;
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  padding: 1rem 1.25rem;
+}
+
+.card-body {
+  padding: 1.25rem;
+  color: var(--text-primary) !important;
+}
+
+/* Input Group */
+.input-group .form-select {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* Validation */
+.is-invalid {
+  border-color: var(--color-danger) !important;
+}
+
+.invalid-feedback {
+  color: var(--color-danger);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
