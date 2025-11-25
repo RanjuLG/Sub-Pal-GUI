@@ -2,5 +2,92 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+/* ========================================
+   CSS Custom Properties for Theming
+   ======================================== */
+
+:root,
+[data-theme="light"] {
+  /* Primary Brand Colors - Light Theme */
+  --color-primary: #7C3AED; /* Electric Violet */
+  --color-primary-hover: #6d28d9;
+  --color-primary-rgb: 124, 58, 237;
+  
+  /* Secondary Colors - Light Theme */
+  --color-secondary: #334155; /* Deep Slate */
+  --color-secondary-hover: #1e293b;
+  
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  
+  /* Text Colors */
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  
+  /* Border Colors */
+  --border-color: #e5e7eb;
+  --border-color-hover: #d1d5db;
+  
+  /* Status Colors (unchanged across themes) */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #dc3545;
+  --color-info: #0dcaf0;
+  
+  /* Card & Component Colors */
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --hover-bg: #f9fafb;
+}
+
+[data-theme="dark"] {
+  /* Primary Brand Colors - Dark Theme */
+  --color-primary: #A78BFA; /* Soft Lavender */
+  --color-primary-hover: #c4b5fd;
+  --color-primary-rgb: 167, 139, 250;
+  
+  /* Secondary Colors - Dark Theme */
+  --color-secondary: #94A3B8; /* Cool Grey */
+  --color-secondary-hover: #cbd5e1;
+  
+  /* Background Colors */
+  --bg-primary: #1f2937;
+  --bg-secondary: #111827;
+  --bg-tertiary: #0f172a;
+  
+  /* Text Colors */
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  
+  /* Border Colors */
+  --border-color: #374151;
+  --border-color-hover: #4b5563;
+  
+  /* Status Colors (adjusted for dark theme) */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-info: #22d3ee;
+  
+  /* Card & Component Colors */
+  --card-bg: #1f2937;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --hover-bg: #374151;
+}
+
+html, body { 
+  height: 100%; 
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body { 
+  margin: 0; 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+}
+

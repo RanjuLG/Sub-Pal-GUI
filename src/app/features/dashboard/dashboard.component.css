@@ -1,8 +1,9 @@
 /* Dashboard Container */
 .dashboard-container {
   min-height: 100vh;
-  background: #f9fafb;
+  background: var(--bg-secondary);
   padding-bottom: 40px;
+  transition: background-color 0.3s ease;
 }
 
 .content {
@@ -11,35 +12,39 @@
 
 /* Welcome Header */
 .welcome-header {
-  background: #ffffff;
+  background: var(--card-bg);
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px var(--card-shadow);
+  border: 1px solid var(--border-color);
   animation: slideDown 0.5s ease-out;
+  transition: all 0.3s ease;
 }
 
 .dashboard-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin-bottom: 8px;
+  transition: color 0.3s ease;
 }
 
 .dashboard-subtitle {
   font-size: 1rem;
   margin-bottom: 0;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 /* Summary Cards */
 .summary-card {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px var(--card-shadow);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   position: relative;
-  background: white;
+  background: var(--card-bg);
   animation: fadeInUp 0.6s ease-out backwards;
 }
 
@@ -50,8 +55,8 @@
 
 .summary-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-color: #d1d5db;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  border-color: var(--border-color-hover);
 }
 
 .summary-card .card-body {
@@ -74,19 +79,19 @@
 }
 
 .monthly-icon {
-  background: #3b82f6;
+  background: var(--color-primary);
 }
 
 .annual-icon {
-  background: #10b981;
+  background: var(--color-success);
 }
 
 .subscriptions-icon {
-  background: #8b5cf6;
+  background: var(--color-primary);
 }
 
 .categories-icon {
-  background: #f59e0b;
+  background: var(--color-warning);
 }
 
 /* Card Content */
@@ -95,30 +100,36 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .card-value {
   font-size: 2rem;
   font-weight: 700;
   margin: 8px 0;
-  color: #1f2937;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .card-trend {
   font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 /* Chart Card */
 .chart-card,
 .renewals-card {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  background: #ffffff;
+  box-shadow: 0 1px 3px var(--card-shadow);
+  background: var(--card-bg);
   animation: fadeInUp 0.6s ease-out 0.5s backwards;
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
 }
 
 .chart-card .card-body,
@@ -130,22 +141,25 @@
 
 .chart-card .card-header,
 .renewals-card .card-header {
-  background: #f9fafb;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
   padding: 20px 24px;
   border-radius: 16px 16px 0 0;
+  transition: all 0.3s ease;
 }
 
 .chart-card .card-header h5,
 .renewals-card .card-header h5 {
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 .header-icon {
   font-size: 1.5rem;
-  color: #3b82f6;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
 }
 
 /* Chart Container */
@@ -167,7 +181,7 @@
 }
 
 .renewal-item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--border-color);
   transition: all 0.2s ease;
 }
 
@@ -176,7 +190,7 @@
 }
 
 .renewal-item:hover {
-  background: #f9fafb;
+  background: var(--hover-bg);
 }
 
 .renewal-content {
@@ -190,11 +204,12 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: #3b82f6;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: background-color 0.3s ease;
 }
 
 .renewal-icon {
@@ -209,13 +224,15 @@
 .renewal-name {
   font-size: 1rem;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin-bottom: 4px;
+  transition: color 0.3s ease;
 }
 
 .renewal-date {
   font-size: 0.875rem;
-  color: #718096;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .renewal-cost {
@@ -223,13 +240,14 @@
 }
 
 .cost-badge {
-  background: #3b82f6;
+  background: var(--color-primary);
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
   font-weight: 700;
   font-size: 0.95rem;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 2px 4px rgba(var(--color-primary-rgb), 0.2);
+  transition: background-color 0.3s ease;
 }
 
 /* Empty State */
@@ -239,20 +257,25 @@
 
 .empty-icon {
   font-size: 4rem;
-  color: #cbd5e0;
+  color: var(--text-tertiary);
   opacity: 0.5;
   display: block;
   margin-bottom: 16px;
+  transition: color 0.3s ease;
 }
 
-.empty-state p {
+.empty-text {
   font-size: 1.125rem;
   font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
-.empty-state small {
+.empty-subtext {
   display: block;
   font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 /* Custom Scrollbar */
@@ -261,17 +284,17 @@
 }
 
 .renewals-list::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-tertiary);
   border-radius: 10px;
 }
 
 .renewals-list::-webkit-scrollbar-thumb {
-  background: #9ca3af;
+  background: var(--text-tertiary);
   border-radius: 10px;
 }
 
 .renewals-list::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: var(--text-secondary);
 }
 
 /* Animations */
@@ -318,6 +341,16 @@
   
   .welcome-header {
     padding: 20px;
+  }
+  
+  .welcome-header .d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  .welcome-header .btn {
+    margin-top: 16px;
+    width: 100%;
   }
   
   .chart-container {

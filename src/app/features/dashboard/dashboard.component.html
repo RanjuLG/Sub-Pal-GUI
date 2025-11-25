@@ -2,10 +2,17 @@
   <div class="content container-fluid py-4" *ngIf="summary">
     <!-- Welcome Header -->
     <div class="welcome-header mb-4">
-      <h2 class="dashboard-title">
-        <i class="bi bi-speedometer2 me-2"></i>Your Subscription Dashboard
-      </h2>
-      <p class="dashboard-subtitle text-muted">Track and manage all your subscriptions in one place</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h2 class="dashboard-title">
+            <i class="bi bi-speedometer2 me-2"></i>Your Subscription Dashboard
+          </h2>
+          <p class="dashboard-subtitle">Track and manage all your subscriptions in one place</p>
+        </div>
+        <button class="btn btn-primary btn-lg" (click)="navigateToSubscriptions()">
+          <i class="bi bi-plus-circle me-2"></i>Add Subscription
+        </button>
+      </div>
     </div>
 
     <!-- Summary Cards -->
@@ -19,7 +26,7 @@
               </div>
               <span class="badge bg-success">Monthly</span>
             </div>
-            <h6 class="card-label text-muted mb-2">Total Monthly Cost</h6>
+            <h6 class="card-label mb-2">Total Monthly Cost</h6>
             <h2 class="card-value">${{ summary.totalMonthlyCost | number:'1.2-2' }}</h2>
             <p class="card-trend mb-0">
               <i class="bi bi-graph-up me-1"></i>
@@ -38,7 +45,7 @@
               </div>
               <span class="badge bg-info">Annual</span>
             </div>
-            <h6 class="card-label text-muted mb-2">Total Annual Cost</h6>
+            <h6 class="card-label mb-2">Total Annual Cost</h6>
             <h2 class="card-value">${{ summary.totalAnnualCost | number:'1.2-2' }}</h2>
             <p class="card-trend mb-0">
               <i class="bi bi-calendar-check me-1"></i>
@@ -57,7 +64,7 @@
               </div>
               <span class="badge bg-primary">Active</span>
             </div>
-            <h6 class="card-label text-muted mb-2">Active Subscriptions</h6>
+            <h6 class="card-label mb-2">Active Subscriptions</h6>
             <h2 class="card-value">{{ summary.upcomingRenewals.length || 0 }}</h2>
             <p class="card-trend mb-0">
               <i class="bi bi-card-list me-1"></i>
@@ -91,8 +98,8 @@
             <ng-template #noData>
               <div class="empty-state text-center py-5">
                 <i class="bi bi-pie-chart empty-icon"></i>
-                <p class="text-muted mt-3 mb-0">No spending data available</p>
-                <small class="text-muted">Add subscriptions to see your spending breakdown</small>
+                <p class="empty-text mt-3 mb-0">No spending data available</p>
+                <small class="empty-subtext">Add subscriptions to see your spending breakdown</small>
               </div>
             </ng-template>
           </div>
@@ -136,8 +143,8 @@
             <ng-template #noRenewals>
               <div class="empty-state text-center py-5">
                 <i class="bi bi-calendar-x empty-icon"></i>
-                <p class="text-muted mt-3 mb-0">No upcoming renewals</p>
-                <small class="text-muted">Your subscriptions will appear here</small>
+                <p class="empty-text mt-3 mb-0">No upcoming renewals</p>
+                <small class="empty-subtext">Your subscriptions will appear here</small>
               </div>
             </ng-template>
           </div>

@@ -1,22 +1,41 @@
 <nav class="navbar navbar-dark" *ngIf="isLoggedIn()">
   <div class="container-fluid">
     <a routerLink="/dashboard" class="navbar-brand d-flex align-items-center">
-      <img src="assets/SubPalLogo.png" alt="Sub Pal" class="logo-img me-2">
+      <img src="assets/SubPalLogo.png" alt="Sub Pal" class="logo-img me-2" />
       <span>SubPal</span>
     </a>
     <div class="d-flex align-items-center">
       <a routerLink="/dashboard" class="btn btn-link me-2" title="Home">
         <i class="bi bi-house-door-fill fs-5"></i>
       </a>
-      <a routerLink="/notifications" class="btn btn-link me-2 position-relative" title="Notifications">
+      <button
+        class="btn btn-link me-2 theme-toggle"
+        (click)="toggleTheme()"
+        title="Toggle Theme"
+      >
+        <i
+          class="bi fs-5"
+          [ngClass]="isDarkTheme() ? 'bi-sun-fill' : 'bi-moon-fill'"
+        ></i>
+      </button>
+      <a
+        routerLink="/notifications"
+        class="btn btn-link me-2 position-relative"
+        title="Notifications"
+      >
         <i class="bi bi-bell-fill fs-5"></i>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
-              *ngIf="(unreadNotificationCount$ | async) as count">
-          {{ count > 99 ? '99+' : count }}
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          *ngIf="unreadNotificationCount$ | async as count"
+        >
+          {{ count > 99 ? "99+" : count }}
           <span class="visually-hidden">unread notifications</span>
         </span>
       </a>
-      <button class="btn btn-outline-light me-2" (click)="navigateToSubscriptions()">
+      <button
+        class="btn btn-outline-light me-2"
+        (click)="navigateToSubscriptions()"
+      >
         <i class="bi bi-card-list"></i> My Subscriptions
       </button>
       <button class="btn btn-outline-light" (click)="logout()">

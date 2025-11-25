@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './core/auth.service';
+import { ThemeService } from './core/theme.service';
 import { NotificationService } from './features/notifications/notification.service';
 import { Observable } from 'rxjs';
 
@@ -17,7 +18,8 @@ export class AppComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    public themeService: ThemeService
   ) {
     this.unreadNotificationCount$ = this.notificationService.unreadCount$;
     
@@ -38,5 +40,13 @@ export class AppComponent {
 
   navigateToSubscriptions(): void {
     this.router.navigate(['/subscriptions']);
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  isDarkTheme(): boolean {
+    return this.themeService.getCurrentTheme() === 'dark';
   }
 }

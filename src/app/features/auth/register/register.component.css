@@ -3,13 +3,17 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease;
 }
 
 mat-card {
   max-width: 400px;
   width: 100%;
   padding: 20px;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
 .full-width {
@@ -18,13 +22,13 @@ mat-card {
 }
 
 .error-message {
-  color: #f44336;
+  color: var(--color-danger);
   margin-bottom: 16px;
   font-size: 14px;
 }
 
 .success-message {
-  color: #4caf50;
+  color: var(--color-success);
   margin-bottom: 16px;
   font-size: 14px;
 }
@@ -35,10 +39,12 @@ mat-card {
 }
 
 .login-link a {
-  color: #3b82f6;
+  color: var(--color-primary);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .login-link a:hover {
   text-decoration: underline;
+  color: var(--color-primary-hover);
 }
