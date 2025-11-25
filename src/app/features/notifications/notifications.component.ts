@@ -71,6 +71,28 @@ export class NotificationsComponent implements OnInit {
     }
   }
 
+  markAsUnread(notification: Notification): void {
+    if (notification.id && notification.isRead) {
+      this.notificationService.markAsUnread(notification.id).subscribe({
+        next: () => {
+          notification.isRead = false;
+          this.applyFilter();
+        },
+        error: (error) => {
+          console.error('Error marking notification as unread:', error);
+        }
+      });
+    }
+  }
+
+  toggleReadStatus(notification: Notification): void {
+    if (notification.isRead) {
+      this.markAsUnread(notification);
+    } else {
+      this.markAsRead(notification);
+    }
+  }
+
   markAllAsRead(): void {
     this.notificationService.markAllAsRead().subscribe({
       next: () => {

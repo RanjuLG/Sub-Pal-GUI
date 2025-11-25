@@ -18,8 +18,9 @@
 }
 
 .notification-card.unread {
-  background-color: var(--hover-bg);
+  background-color: rgba(var(--color-primary-rgb), 0.05);
   border-left-color: var(--color-primary);
+  border-left-width: 6px;
 }
 
 .notification-card.notification-reminder {
@@ -100,17 +101,6 @@
   padding: 0.25rem 0.5rem;
 }
 
-/* Empty state icon */
-.bi-bell-slash {
-  opacity: 0.3;
-}
-
-.empty-icon {
-  font-size: 4rem;
-  color: var(--text-tertiary);
-  transition: color 0.3s ease;
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
   .notification-card {
@@ -128,4 +118,16 @@
   .notification-message {
     font-size: 0.9rem;
   }
+}
+
+
+
+.text-highlight-due {
+  font-weight: bold;
+  color: var(--color-warning);
+}
+
+.meta-text {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }

@@ -51,7 +51,7 @@
          [ngClass]="getNotificationClass(notification.notificationType)">
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-start">
-          <div class="notification-content flex-grow-1" (click)="markAsRead(notification)">
+          <div class="notification-content flex-grow-1" (click)="toggleReadStatus(notification)" style="cursor: pointer;">
             <div class="d-flex align-items-start mb-2">
               <i class="{{getNotificationIcon(notification.notificationType)}} notification-icon me-3"></i>
               <div class="flex-grow-1">
@@ -59,16 +59,15 @@
                   {{ notification.subscriptionName }}
                   <span class="badge bg-secondary ms-2" *ngIf="!notification.isRead">New</span>
                 </h5>
-                <p class="notification-message mb-2">{{ notification.message }}</p>
-                <p class="notification-description text-muted mb-2" *ngIf="notification.description">
-                  <i class="bi bi-chat-left-text me-1"></i>{{ notification.description }}
+                <p class="notification-message mb-2" [innerHTML]="notification.message | highlightPrice"></p>
+                <p class="notification-description mb-2" *ngIf="notification.description" [innerHTML]="notification.description | highlightPrice">
                 </p>
                 <div class="notification-meta">
-                  <small class="text-muted">
+                  <small class="meta-text" [class.text-danger]="!notification.isRead" [class.fw-bold]="!notification.isRead">
                     <i class="bi bi-calendar me-1"></i>
-                    Due: {{ notification.dueDate | localDate }}
+                    <span class="text-highlight-due">Due:</span> {{ notification.dueDate | localDate }}
                   </small>
-                  <small class="text-muted ms-3">
+                  <small class="meta-text ms-3">
                     <i class="bi bi-clock me-1"></i>
                     Created: {{ notification.createdAt | localDate }}
                   </small>
@@ -76,9 +75,16 @@
               </div>
             </div>
           </div>
-          <div class="notification-actions ms-3">
+          <div class="notification-actions ms-3 d-flex flex-column gap-2">
+            <button class="btn btn-sm" 
+                    [class.btn-outline-primary]="notification.isRead"
+                    [class.btn-outline-secondary]="!notification.isRead"
+                    (click)="toggleReadStatus(notification); $event.stopPropagation()"
+                    title="{{ notification.isRead ? 'Mark as Unread' : 'Mark as Read' }}">
+              <i class="bi" [class.bi-envelope]="notification.isRead" [class.bi-envelope-open]="!notification.isRead"></i>
+            </button>
             <button class="btn btn-sm btn-outline-danger" 
-                    (click)="deleteNotification(notification)"
+                    (click)="deleteNotification(notification); $event.stopPropagation()"
                     title="Delete notification">
               <i class="bi bi-trash"></i>
             </button>

@@ -25,6 +25,7 @@ interface ApiConfig {
       getAll: string;
       getUnread: string;
       markAsRead: string;
+      markAsUnread: string;
       markAllAsRead: string;
       delete: string;
     };

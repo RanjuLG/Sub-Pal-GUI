@@ -89,6 +89,12 @@ export class SubscriptionFormComponent implements OnInit {
         id: this.subscription?.id
       };
 
+      if (this.isEdit) {
+        if (!confirm('Are you sure you want to update this subscription?')) {
+          return;
+        }
+      }
+
       const request = this.isEdit
         ? this.subscriptionService.updateSubscription(subscription)
         : this.subscriptionService.addSubscription(subscription);

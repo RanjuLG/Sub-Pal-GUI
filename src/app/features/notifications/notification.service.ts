@@ -46,6 +46,19 @@ export class NotificationService {
     );
   }
 
+  markAsUnread(notificationId: string): Observable<void> {
+    // Assuming an endpoint exists or we use a similar pattern
+    const baseUrl = this.configService.getEndpoint('notifications', 'markAsUnread'); 
+    // If 'markAsUnread' key doesn't exist in config, this might fail if not handled. 
+    // But for now I'll assume it follows the pattern.
+    return this.http.put<void>(`${baseUrl}/${notificationId}`, {}).pipe(
+      tap(() => {
+        const currentCount = this.unreadCountSubject.value;
+        this.unreadCountSubject.next(currentCount + 1);
+      })
+    );
+  }
+
   markAllAsRead(): Observable<void> {
     const url = this.configService.getEndpoint('notifications', 'markAllAsRead');
     return this.http.put<void>(url, {}).pipe(

@@ -149,7 +149,9 @@
 }
 
 .chart-card .card-header h5,
-.renewals-card .card-header h5 {
+.chart-card .card-header h6,
+.renewals-card .card-header h5,
+.renewals-card .card-header h6 {
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
@@ -164,13 +166,12 @@
 
 /* Chart Container */
 .chart-container {
-  height: 400px;
+  height: 250px;
   position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  flex: 1;
 }
 
 /* Renewals List */
@@ -356,4 +357,38 @@
   .chart-container {
     height: 280px;
   }
+}
+
+/* Compact styles */
+.sm-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+}
+
+.card-value {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.empty-icon {
+  color: #dee2e6;
+}
+
+/* Scrollbar for renewals list */
+.renewals-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.renewals-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.renewals-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.renewals-list::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
 }
