@@ -1,4 +1,5 @@
 {
+  "apiUrl": "https://localhost:7233",
   "endpoints": {
     "auth": {
       "login": "/api/auth/login",
@@ -21,6 +22,7 @@
       "getAll": "/api/notifications",
       "getUnread": "/api/notifications/unread",
       "markAsRead": "/api/notifications",
+      "markAsUnread": "/api/notifications/unread",
       "markAllAsRead": "/api/notifications/mark-all-read",
       "delete": "/api/notifications"
     }

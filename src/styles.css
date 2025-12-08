@@ -2,5 +2,177 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+/* ========================================
+   CSS Custom Properties for Theming
+   ======================================== */
+
+:root,
+[data-theme="light"] {
+  /* Primary Brand Colors - Light Theme */
+  --color-primary: #7C3AED; /* Electric Violet */
+  --color-primary-hover: #6d28d9;
+  --color-primary-rgb: 124, 58, 237;
+  
+  /* Secondary Colors - Light Theme */
+  --color-secondary: #334155; /* Deep Slate */
+  --color-secondary-hover: #1e293b;
+  
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  
+  /* Text Colors */
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  
+  /* Border Colors */
+  --border-color: #e5e7eb;
+  --border-color-hover: #d1d5db;
+  
+  /* Status Colors (unchanged across themes) */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #dc3545;
+  --color-info: #0dcaf0;
+  
+  /* Card & Component Colors */
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --hover-bg: #f9fafb;
+}
+
+[data-theme="dark"] {
+  /* Primary Brand Colors - Dark Theme */
+  --color-primary: #A78BFA; /* Soft Lavender */
+  --color-primary-hover: #c4b5fd;
+  --color-primary-rgb: 167, 139, 250;
+  
+  /* Secondary Colors - Dark Theme */
+  --color-secondary: #94A3B8; /* Cool Grey */
+  --color-secondary-hover: #cbd5e1;
+  
+  /* Background Colors */
+  --bg-primary: #1f2937;
+  --bg-secondary: #111827;
+  --bg-tertiary: #0f172a;
+  
+  /* Text Colors */
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  
+  /* Border Colors */
+  --border-color: #374151;
+  --border-color-hover: #4b5563;
+  
+  /* Status Colors (adjusted for dark theme) */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-info: #22d3ee;
+  
+  /* Card & Component Colors */
+  --card-bg: #1f2937;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --hover-bg: #374151;
+  
+  /* Dark Mode Specific Overrides */
+  --btn-close-filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+html, body { 
+  height: 100%; 
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body { 
+  margin: 0; 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+}
+
+/* Global Dark Mode Form Styles */
+[data-theme="dark"] .btn-close {
+  filter: var(--btn-close-filter);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: var(--bg-primary);
+  border-color: var(--color-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .form-select option {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Global Modal Styles */
+.modal-content {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 1.5rem;
+}
+
+.modal-title {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  color: var(--text-primary) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-color) !important;
+  padding: 1.5rem;
+}
+
+
+/* Global Utility Classes */
+.highlight-price {
+  font-weight: bold;
+  color: var(--color-success) !important;
+  background-color: rgba(25, 135, 84, 0.1);
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .highlight-price {
+  background-color: rgba(52, 211, 153, 0.1);
+  color: var(--color-success) !important;
+}
+
+.highlight-date {
+  font-weight: bold;
+  color: var(--color-warning) !important;
+  background-color: rgba(245, 158, 11, 0.1);
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .highlight-date {
+  background-color: rgba(251, 191, 36, 0.1);
+  color: var(--color-warning) !important;
+}

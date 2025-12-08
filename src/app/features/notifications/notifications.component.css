@@ -1,74 +1,85 @@
 .notifications-container {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .notification-card {
   transition: all 0.3s ease;
   border-left: 4px solid transparent;
   cursor: pointer;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
 }
 
 .notification-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--card-shadow);
   transform: translateY(-2px);
 }
 
 .notification-card.unread {
-  background-color: #f8f9fa;
-  border-left-color: #0d6efd;
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+  border-left-color: var(--color-primary);
+  border-left-width: 6px;
 }
 
 .notification-card.notification-reminder {
-  border-left-color: #0dcaf0;
+  border-left-color: var(--color-info);
 }
 
 .notification-card.notification-due {
-  border-left-color: #ffc107;
+  border-left-color: var(--color-warning);
 }
 
 .notification-card.notification-overdue {
-  border-left-color: #dc3545;
+  border-left-color: var(--color-danger);
 }
 
 .notification-icon {
   font-size: 1.5rem;
-  color: #6c757d;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .notification-reminder .notification-icon {
-  color: #0dcaf0;
+  color: var(--color-info);
 }
 
 .notification-due .notification-icon {
-  color: #ffc107;
+  color: var(--color-warning);
 }
 
 .notification-overdue .notification-icon {
-  color: #dc3545;
+  color: var(--color-danger);
 }
 
 .notification-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #212529;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .notification-message {
   font-size: 1rem;
-  color: #495057;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .notification-description {
   font-size: 0.9rem;
   font-style: italic;
   padding: 0.5rem;
-  background-color: #f8f9fa;
+  background-color: var(--bg-tertiary);
   border-radius: 4px;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
 }
 
 .notification-meta {
   font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .notification-content {
@@ -81,23 +92,13 @@
 }
 
 .btn-group {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--card-shadow);
 }
 
 /* Badge styling */
 .badge {
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
-}
-
-/* Empty state icon */
-.bi-bell-slash {
-  opacity: 0.3;
-}
-
-.empty-icon {
-  font-size: 4rem;
-  color: #ccc;
 }
 
 /* Responsive design */
@@ -117,4 +118,16 @@
   .notification-message {
     font-size: 0.9rem;
   }
+}
+
+
+
+.text-highlight-due {
+  font-weight: bold;
+  color: var(--color-warning);
+}
+
+.meta-text {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }

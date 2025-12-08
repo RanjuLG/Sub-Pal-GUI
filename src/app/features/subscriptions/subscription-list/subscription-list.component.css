@@ -1,24 +1,244 @@
 .subscription-container {
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 h1 {
   margin-bottom: 20px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
-.table-container {
-  overflow-x: auto;
-  margin-bottom: 80px;
+/* Modern Table Container */
+.subscriptions-table-container {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-table {
+/* Modern Table Styles */
+.modern-table {
   width: 100%;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
-.add-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+.modern-table thead {
+  background: var(--color-primary) !important;
+  color: white !important;
 }
+
+.modern-table thead th {
+  padding: 16px 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none !important;
+  white-space: nowrap;
+  color: white !important;
+  background-color: transparent !important;
+}
+
+.modern-table thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.modern-table thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.modern-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.modern-table tbody tr:hover {
+  background-color: var(--hover-bg);
+  transform: scale(1.001);
+  box-shadow: 0 2px 4px var(--card-shadow);
+}
+
+.modern-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.modern-table tbody td {
+  padding: 18px 20px;
+  color: var(--text-primary) !important;
+  vertical-align: middle;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  background-color: transparent !important;
+}
+
+/* Ensure all text in table is visible */
+.modern-table tbody td *,
+.modern-table tbody td,
+.subscription-row td {
+  color: var(--text-primary) !important;
+}
+
+.modern-table tbody tr {
+  background-color: transparent !important;
+}
+
+/* Subscription Name */
+.subscription-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary) !important;
+}
+
+.status-indicator {
+  color: var(--color-success);
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Price */
+.subscription-price {
+  font-weight: 700;
+  color: var(--color-primary) !important;
+  font-size: 1.1rem;
+}
+
+/* Category Badge */
+.category-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Billing Cycle Badge */
+.billing-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.badge-monthly {
+  background: rgba(var(--color-primary-rgb), 0.1) !important;
+  color: var(--color-primary) !important;
+  border: 1px solid var(--color-primary);
+}
+
+.badge-yearly {
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: var(--color-success) !important;
+  border: 1px solid var(--color-success);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color) !important;
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.btn-action i {
+  color: var(--text-primary) !important;
+  transition: color 0.2s ease;
+}
+
+.btn-edit:hover {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  transform: translateY(-2px);
+}
+
+.btn-edit:hover i {
+  color: white !important;
+}
+
+.btn-delete:hover {
+  background: var(--color-danger) !important;
+  border-color: var(--color-danger) !important;
+  transform: translateY(-2px);
+}
+
+.btn-delete:hover i {
+  color: white !important;
+}
+
+/* Empty State */
+.empty-subscriptions {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-subscriptions .empty-icon {
+  font-size: 5rem;
+  color: var(--text-tertiary);
+  opacity: 0.3;
+  margin-bottom: 24px;
+}
+
+.empty-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.empty-message {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modern-table {
+    font-size: 0.875rem;
+  }
+  
+  .modern-table thead th,
+  .modern-table tbody td {
+    padding: 12px 10px;
+  }
+  
+  .subscription-name {
+    font-size: 0.9rem;
+  }
+  
+  .subscription-price {
+    font-size: 1rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+

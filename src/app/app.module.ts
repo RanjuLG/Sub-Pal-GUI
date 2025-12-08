@@ -29,6 +29,7 @@ import { NotificationsComponent } from './features/notifications/notifications.c
 
 // Pipes
 import { LocalDatePipe } from './shared/local-date.pipe';
+import { HighlightPricePipe } from './shared/highlight-price.pipe';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -38,7 +39,8 @@ import { LocalDatePipe } from './shared/local-date.pipe';
         SubscriptionListComponent,
         SubscriptionFormComponent,
         NotificationsComponent,
-        LocalDatePipe
+        LocalDatePipe,
+        HighlightPricePipe
     ],
     bootstrap: [AppComponent], imports: [
         BrowserModule,
